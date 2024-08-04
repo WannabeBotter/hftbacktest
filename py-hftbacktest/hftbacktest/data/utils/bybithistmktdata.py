@@ -64,7 +64,7 @@ def convert(
 
                 for key in orderbook_keys:
                     if key in obj["data"].keys():
-                        if update_type == "snapshot":
+                        if update_type == "snapshot" and len(obj["data"][key]) > 0:
                             # Insert DEPTH_CLEAR_EVENT before DEPTH_SNAPSHOT_EVENT
                             tmp[row_num] = (
                                 DEPTH_CLEAR_EVENT | (SELL_EVENT if key == "a" else BUY_EVENT),
